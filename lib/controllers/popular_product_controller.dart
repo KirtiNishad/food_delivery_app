@@ -1,15 +1,9 @@
-// import 'package:flutter/foundation.dart';
-// import 'dart:math';
-
-// import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controllers/cart_controller.dart';
 import 'package:food_delivery_app/data/repository/popular_product_repo.dart';
-import 'package:food_delivery_app/models/cart_model.dart';
 import 'package:food_delivery_app/models/products_model.dart';
 import 'package:food_delivery_app/utils/colors.dart';
 import 'package:get/get.dart';
-// import 'dart:developer';
 
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
@@ -40,7 +34,9 @@ class PopularProductController extends GetxController {
       _isLoaded = true;
 
       update();
-    } else {}
+    } else {
+      Get.log('Didn\'t get popular product');
+    }
   }
 
   void setQuantity(bool isIncrement) {

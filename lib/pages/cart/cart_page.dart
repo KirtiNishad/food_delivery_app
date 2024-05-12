@@ -119,20 +119,6 @@ class CartPage extends StatelessWidget {
                                                 RouteHelper.getRecommendedFood(
                                               recommendedIndex,
                                             ));
-                                            // if (recommendedIndex < 0) {
-                                            //   Get.snackbar(
-                                            //     "History Product",
-                                            //     "Product review is not available for history product",
-                                            //     backgroundColor:
-                                            //         AppColors.mainColor,
-                                            //     colorText: Colors.white,
-                                            //   );
-                                            // } else {
-                                            //   Get.toNamed(RouteHelper
-                                            //       .getRecommendedFood(
-                                            //     recommendedIndex,
-                                            //   ));
-                                            // }
                                           }
                                         }),
                                         child: Container(
@@ -144,20 +130,14 @@ class CartPage extends StatelessWidget {
                                             image: DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: NetworkImage(
-                                                    AppConstants.BASE_URL +
-                                                        "/uploads/" +
-                                                        cartController
-                                                            .getItems[index]
-                                                            .img!)),
+                                                    "${AppConstants.BASE_URL}/uploads/${cartController.getItems[index].img!}")),
                                             borderRadius: BorderRadius.circular(
                                                 Dimension.radius20),
                                             color: Colors.white,
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: Dimension.width10,
-                                      ),
+                                      SizedBox(width: Dimension.width10),
                                       Expanded(
                                         child: Container(
                                           height: Dimension.height20 * 5,
@@ -197,21 +177,22 @@ class CartPage extends StatelessWidget {
                                                     child: Row(
                                                       children: [
                                                         GestureDetector(
-                                                            onTap: (() {
-                                                              cartController.addItem(
-                                                                  _cartList[
-                                                                          index]
-                                                                      .product!,
-                                                                  -1);
-                                                            }),
-                                                            child: Icon(
-                                                                Icons.remove,
-                                                                color: AppColors
-                                                                    .signColor)),
+                                                          onTap: (() {
+                                                            cartController.addItem(
+                                                                _cartList[index]
+                                                                    .product!,
+                                                                -1);
+                                                          }),
+                                                          child: const Icon(
+                                                              Icons.remove,
+                                                              color: AppColors
+                                                                  .signColor),
+                                                        ),
                                                         SizedBox(
-                                                            width: Dimension
-                                                                    .width10 /
-                                                                2),
+                                                          width: Dimension
+                                                                  .width10 /
+                                                              2,
+                                                        ),
                                                         BigText(
                                                             text: cartController
                                                                 .getItems[index]
@@ -223,13 +204,14 @@ class CartPage extends StatelessWidget {
                                                                 2),
                                                         GestureDetector(
                                                             onTap: (() {
-                                                              cartController.addItem(
-                                                                  _cartList[
-                                                                          index]
-                                                                      .product!,
-                                                                  1);
+                                                              cartController
+                                                                  .addItem(
+                                                                _cartList[index]
+                                                                    .product!,
+                                                                1,
+                                                              );
                                                             }),
-                                                            child: Icon(
+                                                            child: const Icon(
                                                                 Icons.add,
                                                                 color: AppColors
                                                                     .signColor))

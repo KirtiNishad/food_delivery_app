@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/controllers/auth_controller.dart';
 import 'package:food_delivery_app/controllers/cart_controller.dart';
 import 'package:food_delivery_app/controllers/popular_product_controller.dart';
 import 'package:food_delivery_app/routes/route_helper.dart';
@@ -59,6 +60,7 @@ class PopularFoodDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                //back icon
                 GestureDetector(
                   onTap: () {
                     if (page == 'cartPage') {
@@ -69,6 +71,7 @@ class PopularFoodDetail extends StatelessWidget {
                   },
                   child: const AppIcon(icon: Icons.arrow_back_ios),
                 ),
+                //add to cart icon
                 GetBuilder<PopularProductController>(
                   builder: (product) {
                     return GestureDetector(
@@ -179,9 +182,7 @@ class PopularFoodDetail extends StatelessWidget {
                     right: Dimension.width20,
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      Dimension.radius20,
-                    ),
+                    borderRadius: BorderRadius.circular(Dimension.radius20),
                     color: Colors.white,
                   ),
                   child: Row(
@@ -197,8 +198,6 @@ class PopularFoodDetail extends StatelessWidget {
                       ),
                       SizedBox(width: Dimension.width10 / 2),
                       BigText(
-                        // text: popularProduct.inCartItems.toString(),
-                        // text: '0',
                         text: popularProduct.inCartItems.toString(),
                       ),
                       SizedBox(width: Dimension.width10 / 2),
@@ -215,9 +214,6 @@ class PopularFoodDetail extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  // onTap: (() {
-                  //   popularProduct.addItem(product);
-                  // }),
                   child: Container(
                     padding: EdgeInsets.only(
                       top: Dimension.height10,
@@ -231,7 +227,11 @@ class PopularFoodDetail extends StatelessWidget {
                     ),
                     child: GestureDetector(
                       onTap: () {
-                        popularProduct.addItem(product);
+                        if (Get.find<AuthController>().userLoggedIn()) {
+                          popularProduct.addItem(product);
+                        } else {
+                          Get.toNamed(RouteHelper.signIn);
+                        }
                       },
                       child: BigText(
                         text: "\$ ${product.price!} | Add to cart",

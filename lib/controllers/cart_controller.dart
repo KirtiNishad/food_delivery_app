@@ -10,7 +10,7 @@ class CartController extends GetxController {
 
   CartController({required this.cartRepo});
 
-  Map<int, CartModel> _items = {};
+  final Map<int, CartModel> _items = {};
   Map<int, CartModel> get items => _items;
 
   void addItem(ProductModel product, int quantity) {
@@ -19,22 +19,19 @@ class CartController extends GetxController {
     var totalQuantity = 0;
 
     if (_items.containsKey(product.id)) {
-      _items.update(
-        product.id!,
-        (value) {
-          totalQuantity = value.quantity! + quantity;
-          return CartModel(
-            id: value.id,
-            name: value.name,
-            price: value.price,
-            img: value.img,
-            quantity: value.quantity! + quantity,
-            isExist: true,
-            time: DateTime.now().toString(),
-            product: product,
-          );
-        },
-      );
+      _items.update(product.id!, (value) {
+        totalQuantity = value.quantity! + quantity;
+        return CartModel(
+          id: value.id,
+          name: value.name,
+          price: value.price,
+          img: value.img,
+          quantity: value.quantity! + quantity,
+          isExist: true,
+          time: DateTime.now().toString(),
+          product: product,
+        );
+      });
 
       if (totalQuantity <= 0) {
         _items.remove(product.id);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/pages/account/account_page.dart';
 import 'package:food_delivery_app/pages/cart/cart_page.dart';
 import 'package:food_delivery_app/pages/home/main_food_page.dart';
 import 'package:food_delivery_app/utils/colors.dart';
@@ -17,8 +18,7 @@ class _HomePageState extends State<HomePage> {
   List pages = [
     const MainFoodPage(),
     const CartPage(),
-    // Container(child: const Center(child: Text("3nd page"))),
-    // Container(child: const Center(child: Text("4th page"))),
+    const AccountPage(),
   ];
 
   void onTapNav(int index) {
@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Get.log('....................Going to the ${_selectedIndex} tab');
+    Get.log('....................Going to the $_selectedIndex tab');
     return Scaffold(
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -52,10 +52,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.shopping_cart),
             label: "cart",
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.person),
-          //   label: "me",
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "me",
+          ),
         ],
       ),
     );

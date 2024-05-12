@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// import 'package:food_delivery_app/modles/product_models.dart';
-
 import 'package:food_delivery_app/models/products_model.dart';
 
 class CartModel {

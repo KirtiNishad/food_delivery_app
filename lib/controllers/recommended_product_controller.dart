@@ -26,9 +26,9 @@ class RecommendedProductController extends GetxController {
 
       _isLoaded = true;
 
-      // Get.log(_popularProductList.toString());
-
       update();
-    } else {}
+    } else {
+      Get.log('Didn\'t get popular product');
+    }
   }
 }

@@ -8,7 +8,16 @@ class AppConstants {
   static const String RECOMENDED_PRODUCT_URI = "/api/v1/products/recommended";
   static const String UPLOAD_URI = "/uploads/";
 
-  static const String TOKEN = "DBtoken";
+  // auth
+  static const String REGISTRATION_URI = "/api/v1/auth/register";
+  static const String LOGIN_URI = "/api/v1/auth/login";
+
+  // user
+  static const String USER_INFO_URI = "/api/v1/customer/info";
+
+  static const String TOKEN = "";
+  static const String PHONE = "";
+  static const String PASSWORD = "";
   static const String CART_LIST = "cart-list";
   static const String CART_HISTORY_LIST = "cart-history-list";
 }
