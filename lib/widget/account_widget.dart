@@ -20,15 +20,6 @@ class AccountWidget extends StatelessWidget {
         top: Dimension.width10,
         bottom: Dimension.width10,
       ),
-      child: Row(
-        children: [
-          appIcon,
-          SizedBox(
-            width: Dimension.width20,
-          ),
-          bigText,
-        ],
-      ),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -37,6 +28,15 @@ class AccountWidget extends StatelessWidget {
             offset: Offset(0, 2),
             color: Colors.grey.withOpacity(0.2),
           ),
+        ],
+      ),
+      child: Row(
+        children: [
+          appIcon,
+          SizedBox(
+            width: Dimension.width20,
+          ),
+          bigText,
         ],
       ),
     );
